@@ -3,12 +3,14 @@
  *
  * You need to replace YOUR_API_KEY in the string associated with KEY with your actual API key
  */
+
 export const BASE_URL = "https://api.harvardartmuseums.org";
 export const KEY = "apikey=746caf8b-6478-4506-9b69-09e7876b6c08";
 
 /**
  * This will make a call to the API for a single term and value (e.g. "person", and "unknown"), and return the result
  */
+
 export async function fetchQueryResultsFromTermAndValue(term, value) {
   try {
     const response = await fetch(
@@ -23,7 +25,6 @@ export async function fetchQueryResultsFromTermAndValue(term, value) {
     throw error;
   }
 }
-
 /**
  * This will make a call to the API for a preformed url (useful for previous and next buttons), and return the result
  */
@@ -72,8 +73,7 @@ export async function fetchAllCenturies() {
 
   try {
     const response = await fetch(url);
-    const data = await response.json();
-    const records = data.records;
+    const { records } = await response.json();
 
     localStorage.setItem("centuries", JSON.stringify(records));
 
@@ -95,8 +95,7 @@ export async function fetchAllClassifications() {
 
   try {
     const response = await fetch(url);
-    const data = await response.json();
-    const records = data.records;
+    const { records } = await response.json();
 
     localStorage.setItem("classifications", JSON.stringify(records));
 

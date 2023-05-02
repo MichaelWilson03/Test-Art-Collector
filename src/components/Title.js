@@ -1,5 +1,3 @@
-import React from "react";
-
 /**
  * Create/export a component called Title which uses this static HTML as the template:
  *
@@ -12,6 +10,8 @@ import React from "react";
  *   </h5>
  * </div>
  */
+
+import React from "react";
 
 const Title = () => (
   <div id="title">
