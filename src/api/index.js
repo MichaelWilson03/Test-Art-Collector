@@ -1,29 +1,42 @@
+/**
+ * This file features and exports all of your calls to the API
+ *
+ * You need to replace YOUR_API_KEY in the string associated with KEY with your actual API key
+ */
+
 export const BASE_URL = "https://api.harvardartmuseums.org";
 export const KEY = "apikey=746caf8b-6478-4506-9b69-09e7876b6c08";
 
 /**
  * This will make a call to the API for a single term and value (e.g. "person", and "unknown"), and return the result
  */
-/**
- * This will make a call to the API for a single term and value (e.g. "person", and "unknown"), and return the result
- */
+
 export async function fetchQueryResultsFromTermAndValue(term, value) {
-  const response = await fetch(
-    `${BASE_URL}/object?${KEY}&${term}=${encodeURI(value.split("-").join("|"))}`
-  );
-  const data = await response.json();
+  try {
+    const response = await fetch(
+      `${BASE_URL}/object?${KEY}&${term}=${encodeURI(
+        value.split("-").join("|")
+      )}`
+    );
+    const data = await response.json();
 
-  return data;
+    return data;
+  } catch (error) {
+    throw error;
+  }
 }
-
 /**
  * This will make a call to the API for a preformed url (useful for previous and next buttons), and return the result
  */
 export async function fetchQueryResultsFromURL(url) {
-  const response = await fetch(url);
-  const data = await response.json();
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
 
-  return data;
+    return data;
+  } catch (error) {
+    throw error;
+  }
 }
 
 /**
@@ -38,10 +51,14 @@ export async function fetchQueryResults({
 }) {
   const url = `${BASE_URL}/object?${KEY}&classification=${classification}&century=${century}&keyword=${queryString}`;
 
-  const response = await fetch(url);
-  const data = await response.json();
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
 
-  return data;
+    return data;
+  } catch (error) {
+    throw error;
+  }
 }
 
 /**
@@ -54,12 +71,16 @@ export async function fetchAllCenturies() {
 
   const url = `${BASE_URL}/century?${KEY}&size=100&sort=temporalorder`;
 
-  const response = await fetch(url);
-  const { records } = await response.json();
+  try {
+    const response = await fetch(url);
+    const { records } = await response.json();
 
-  localStorage.setItem("centuries", JSON.stringify(records));
+    localStorage.setItem("centuries", JSON.stringify(records));
 
-  return records;
+    return records;
+  } catch (error) {
+    throw error;
+  }
 }
 
 /**
@@ -72,10 +93,14 @@ export async function fetchAllClassifications() {
 
   const url = `${BASE_URL}/classification?${KEY}&size=100&sort=name`;
 
-  const response = await fetch(url);
-  const { records } = await response.json();
+  try {
+    const response = await fetch(url);
+    const { records } = await response.json();
 
-  localStorage.setItem("classifications", JSON.stringify(records));
+    localStorage.setItem("classifications", JSON.stringify(records));
 
-  return records;
+    return records;
+  } catch (error) {
+    throw error;
+  }
 }

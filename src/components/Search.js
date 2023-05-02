@@ -1,5 +1,7 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
+/**
+ * Don't touch these imports!
+ */
 import {
   fetchAllCenturies,
   fetchAllClassifications,
@@ -55,7 +57,7 @@ const Search = ({ setIsLoading, setSearchResults }) => {
       </fieldset>
       <fieldset>
         <label htmlFor="select-classification">
-          Classification{" "}
+          Classification
           <span className="classification-count">
             ({classificationList.length})
           </span>

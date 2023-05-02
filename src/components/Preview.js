@@ -1,5 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from "react";
+/**
+ * We need to import fetchQueryResultsFromURL since we will sometimes have urls in info.prev and info.next
+ * which are query urls.
+ */
 
 import { fetchQueryResultsFromURL } from "../api";
 
@@ -25,6 +29,7 @@ const Preview = ({
   return (
     <aside id="preview">
       <header className="pagination">
+        {/* This button should be disabled if nothing is set in info.prev, and should call fetchPage with info.prev when clicked */}
         <button
           disabled={!info.prev}
           className="previous"
@@ -34,6 +39,7 @@ const Preview = ({
         >
           Previous
         </button>
+        {/* This button should be disabled if nothing is set in info.next, and should call fetchPage with info.next when clicked */}
         <button
           disabled={!info.next}
           className="next"
