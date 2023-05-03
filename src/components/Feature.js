@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import { fetchQueryResultsFromTermAndValue } from "../api";
 
@@ -20,7 +20,7 @@ const Searchable = (props) => {
             });
             setSearchResults(queryResults);
           } catch {
-            console.error("Something's wrong on searchable!");
+            console.error("error");
           } finally {
             setIsLoading(false);
           }
